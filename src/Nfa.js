@@ -17,6 +17,14 @@ function Nfa(q, a, t, s, f) {
   this.f = f;
 }
 
+/**
+ * Returns the set of possible next states after
+ * reading symbol from state q.
+ *
+ * @param {State} state Origin state
+ * @param {string} symbol The symbol to be read
+ * @return {array} An array of reachable states
+ */
 Nfa.prototype.delta = function (state, symbol) {
   if (!this.a.contains(symbol)) {
     throw new Error("The symbol "+symbol+" is unknown in the alphabet "+this.a);
@@ -59,7 +67,7 @@ Nfa.prototype.deltaStar = function (state, word) {
  * @return {boolean} True iff the machine accepts word
  */
 Nfa.prototype.accepts = function (word) {
-  return _.intersection(this.deltaStar(), this.f).length > 0;
+  return _.intersection(this.deltaStar(word), this.f).length > 0;
 };
 
 module.exports = Nfa;

@@ -50,7 +50,7 @@ describe('Nfa', function () {
     // test branching? with dead-end branches? test whether the resulting set is flattened? test epsilon transitions?
   });
 
-  // test closure
+  // test epsilon closures
   // test #accepts
 
   /*
